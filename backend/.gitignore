@@ -1,0 +1,79 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# =====================
+# Node / React Frontend
+# =====================
+
+### Node modules ###
+/frontend/node_modules/
+
+### Build Output ###
+/frontend/build/
+/frontend/dist/
+
+### Logs ###
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+### Environment Files ###
+/frontend/.env
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# =====================
+# Java / Spring Boot Backend
+# =====================
+
+### Maven Target Folder ###
+/backend/target/
+
+### Eclipse/IDE-specific Files ###
+/backend/.classpath
+/backend/.project
+/backend/.settings/
+backend/.factorypath
+
+### Logs ###
+/backend/*.log
+
+### Environment Files ###
+/backend/.env
+
+# =====================
+# System / OS
+# =====================
+
+### macOS ###
+.DS_Store
+
+### Windows ###
+Thumbs.db
