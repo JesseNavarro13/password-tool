@@ -13,14 +13,14 @@ The purpose of our application is to educate users about password strength and e
 - Browser extension to show crack-time metrics in real time
 
 ## **🛠️ Tech Stack**
-**Frontend:** React, HTML, CSS, JavaScript\
-**Backend:** Java (Spring Boot)\
+**Frontend:** React: HTML, CSS, JavaScript\
+**Backend:** Spring Boot: Java\
 **Other tools:** GitHub, VS Code
 
 ## 🚀 Getting Started
 ### **Prerequisites**
-Node.js\
-Java JDK\
+Node.js + npm\
+Java JDK 17+\
 Maven\
 Git
 ### **Installation**
