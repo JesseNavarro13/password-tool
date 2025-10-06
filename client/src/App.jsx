@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import './index.css';
 import CyberMapEmbed from './components/CyberMapEmbed';
+import CyberSecurityTab from './components/CyberSecurityTab';
 
 function App() {
   const [activeTab, setActiveTab] = useState('password');
@@ -106,11 +107,11 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black-100 text-white px-4">
 
       {/* Header */}
       <header className="w-full max-w-4xl p-6 text-center">
-        <h1 className="text-4xl font-bold text-white drop-shadow-[4px_4px_6px_rgba(0,0,0,0.8)]">Password Strength & Cybersecurity Learning App</h1>
+        <h1 className="font-bold drop-shadow-[4px_4px_6px_rgba(0,0,0,0.8)] mb-10">Password Strength & Cybersecurity Learning App</h1>
       </header>
 
       {/* Tabs Menu */}
@@ -127,25 +128,11 @@ function App() {
       </div>
 
       {/* Password Strength Checker Tab */}
-      <div style = {{
-        width: '100%', 
-        maxWidth: '1000px', 
-        padding: '20px'
-      }}>
+      <div className="w-full max-w-5xl p-5">
         {activeTab === 'password' && (
           <div>
-            <div style={{
-              display: 'flex', 
-              justifyContent: 'center', 
-              flexDirection: 'column', 
-              alignItems: 'center',
-              gap: '0px',
-              marginTop: '20px'
-            }}>
-              <div style={{ 
-                display: 'flex', 
-                alignItems: 'center' 
-              }}>
+            <div className="flex flex-col items-center mt-5">
+              <div className="flex items-center">
         
               {/* Password Input Field */}
               <input 
@@ -153,14 +140,7 @@ function App() {
                 placeholder="Enter your password"
                 value={password} 
                 onChange={handleChange} 
-                style={{
-                  padding: '10px', 
-                  fontsize: '16px', 
-                  width: '250px', 
-                  borderRadius: '5px 0 0 5px', 
-                  border: '1px solid #ccc',
-                  borderRight: 'none'
-                }}
+                className = "px-3 py-2 text-base w-64 border border-gray-300 rounded-1-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
               />
 
               {/* Toggle Password Button */}
@@ -251,112 +231,15 @@ function App() {
       
         {/* Cybersecurity Info/Help Tab & Live Map*/}
         {activeTab === 'cybersecurity' && (
-          <div style={{
-            display: 'flex', 
-            justifyContent: 'center', 
-            flexDirection: 'column', 
-            alignItems: 'center',
-            gap: '0px',
-            marginTop: '0px',
-          }}>
-            <h2 className='font-semibold text-2xl m-4'>Cybersecurity Information and Definitions</h2>
-
-            {/* Collapsable Sections */}
-            {sections.map((section, index) => (
-              <div key={index} style={{
-                width: '100%',
-                marginBottom: '10px',
-                alignItems: 'center'
-              }}>
-                <div style={{
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'center'
-                }}>
-                <button
-                  onClick={() => setOpenSection(openSection === index ? null : index)}
-                  style={{
-                    width: '100%', 
-                    maxWidth: '600px',
-                    textAlign: 'left', 
-                    padding: '10px', 
-                    border: '1px solid #ccc', 
-                    borderRadius: '5px', 
-                    backgroundColor: openSection === index ? '#b3d3f1ff' : '#2badd1', 
-                    color: '#fff', 
-                    cursor: 'pointer', 
-                    fontWeight: 'bold',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                  }}
-                >
-                  {section.title}
-                  <span style={{ marginLeft: '10px' }}>
-                    {openSection === index ? '▲' : '▼'}
-                    </span>
-                  </button>
-
-                  {openSection === index && (
-                    <div style={{
-                      maxWidth: '575px', 
-                      width: '100%', 
-                      textAlign: 'left',
-                      padding: '10px', 
-                      border: '1px solid #ccc', 
-                      borderTop: 'none', 
-                      borderRadius: '0 0 5px 5px', 
-                      backgroundColor: '#f9f9f9', 
-                      color: '#000',
-                      wordWrap: 'break-word',
-                      overflowWrap: 'break-word'
-                    }}>
-                      {section.content}
-                    </div>
-                  )}
-                  </div>
-              </div>
-            ))}
-
-            {/* Simple Quiz */}
-            <div style={{marginTop: '10px'}}>
-              <h3 className='text-2xl'>Quick Quiz</h3>
-              <p>What does 2FA stand for in cybersecurity?</p>
-              <input
-                type='text'
-                placeholder='Your answer...'
-                value={quizAnswer}
-                onChange={(e) => setQuizAnswer(e.target.value)}
-                style={{
-                  padding: '8px', 
-                  fontsize: '16px', 
-                  width: '250px', 
-                  borderRadius: '5px', 
-                  border: '1px solid #ccc'}}
-                />
-              <button
-                onClick={handleQuizSubmit}
-                style={{
-                  marginLeft: '10px', 
-                  padding: '8px 15px', 
-                  border: '1px solid #ccc', 
-                  borderRadius: '5px', 
-                  backgroundColor: '#155cb2ff', 
-                  color: '#fff', 
-                  cursor: 'pointer'}}
-                >
-                  Submit</button>
-                  {quizResult && (
-                    <p style={{
-                      marginTop: '10px', 
-                      fontWeight: 'bold', 
-                      color: quizResult.startsWith("Correct") ? 'green' : 'red'}}>{quizResult}</p>
-                  )}
-            </div>
-
-            <h3 style={{marginTop: '50px'}}>Live Cyber Attack Map</h3>
-            <CyberMapEmbed src="https://cybermap.kaspersky.com/en/widget/dynamic/dark" frameborder='0' title="Kaspersky Cyber Map" height="520px" />
-          </div>
+          <CyberSecurityTab
+            sections={sections}
+            openSection={openSection}
+            setOpenSection={setOpenSection}
+            quizAnswer={quizAnswer}
+            setQuizAnswer={setQuizAnswer}
+            handleQuizSubmit={handleQuizSubmit}
+            quizResult={quizResult}
+            >/</CyberSecurityTab>
         )}
       </div>
     </div>    
