@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import './App.css';
 import './index.css';
+import Homepage from './components/Homepage';
 import PasswordStrengthTab from './components/PasswordStrengthTab';
 import CyberSecurityTab from './components/CyberSecurityTab';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('password');
+  const [activeTab, setActiveTab] = useState('home');
 
   // Cybersecurity Info/Help Tab Collapsable sections
   const [openSection, setOpenSection] = useState(null);
@@ -16,7 +17,8 @@ function App() {
 
   const tabs = [
     { id: 'password', label: 'Password Strength Checker' },
-    { id: 'cybersecurity', label: 'Cybersecurity Info/Help' },
+    { id: 'home', label: 'Home'},
+    { id: 'cybersecurity', label: 'Cybersecurity Info' },
   ];
 
   const sections = [
@@ -57,32 +59,42 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black-100 text-white px-4">
-
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
       {/* Header */}
-      <header className="w-full max-w-4xl p-6 text-center">
-        <h1 className="font-bold drop-shadow-[4px_4px_6px_rgba(0,0,0,0.8)] mb-10">Password Strength & Cybersecurity Learning App</h1>
+      <header className="w-full p-6 text-center bg-black/20 backdrop-blur-md border-b border-white/10">
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg">
+          Password Strength & Cybersecurity Learning App
+        </h1>
       </header>
 
       {/* Tabs Menu */}
-      <div className='flex gap-4'>
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`tab-button ${activeTab === tab.id ? "active" : ""}`}
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div className="flex justify-center p-6">
+        <div className="flex gap-2 bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                activeTab === tab.id 
+                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-105" 
+                  : "text-gray-300 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Password Strength Checker Tab */}
-      <div className="w-full max-w-5xl p-5">
-        {activeTab === 'password' && <PasswordStrengthTab></PasswordStrengthTab>
-        }
+      {/* Content Area */}
+      <div className="w-full">
+        {/* Homepage*/}
+        {activeTab === 'home' && <Homepage onTabChange={setActiveTab}/>}
+
+        {/* Password Strength Checker Tab */}
+        {activeTab === 'password' && <PasswordStrengthTab/>}
       
-      {/* Cybersecurity Info/Help Tab & Live Map*/}
+        {/* Cybersecurity Info/Help Tab & Live Map*/}
         {activeTab === 'cybersecurity' && (
           <CyberSecurityTab
             sections={sections}
