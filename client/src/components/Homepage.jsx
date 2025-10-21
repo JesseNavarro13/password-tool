@@ -6,7 +6,7 @@ const Homepage = ({ onTabChange }) => {
       {/*Header*/}
       <header className="flex justify-between items-center p-6 bg-black/20 backdrop-blur-md text-white shadow-2xl sticky top-0 z-50 border-b border-white/10">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          SecureMe
+          LockNLearn
         </h1>
         <nav>
           <ul className="flex gap-6">
@@ -112,7 +112,7 @@ const Homepage = ({ onTabChange }) => {
       {/* Footer */}
       <footer className="bg-black/30 backdrop-blur-md text-white py-12 mt-auto border-t border-white/10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
-          <p className="text-gray-300 mb-4 md:mb-0">&copy; 2025 SecureMe.</p>
+          <p className="text-gray-300 mb-4 md:mb-0">&copy; 2025 LockNLearn.</p>
           <ul className="flex gap-6">
             <li><button onClick={() => onTabChange('password')} className="hover:text-blue-300 transition-colors duration-300 font-medium">Password Strength</button></li>
             <li><button onClick={() => onTabChange('cybersecurity')} className="hover:text-blue-300 transition-colors duration-300 font-medium">Cybersecurity Info</button></li>
