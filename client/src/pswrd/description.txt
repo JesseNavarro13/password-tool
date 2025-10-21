@@ -1,0 +1,5 @@
+BEHOLD! EXTREME ROCK PAPER SCISSORS!
+
+This amazing web page allows the user to engage in epic rock-paper-scissors combat against a highly advanced A.I. opponent! (the "A.Is" decisions are completely random). This app comes packed with amazing features including a working results page *wow* and a recently functioning scoreboard *cool* 
+
+But that's not all. This amazing application includes ALL optional objectives. It has light/dark theme toggle, unique audio effect corresponding to each outcome, and a scoreboard! By implementing all optional features, this application unlocks the hidden bonus extra credit which fully negates any embarrassingly low quiz 3 scores such as quiz 3. Thanks in advance and welcome to EXTREME ROCK PAPER SCISSORS!!!
