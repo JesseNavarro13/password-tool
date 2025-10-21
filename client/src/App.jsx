@@ -63,7 +63,7 @@ function App() {
       {/* Header */}
       <header className="w-full p-6 text-center bg-black/20 backdrop-blur-md border-b border-white/10">
         <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg">
-          Password Strength & Cybersecurity Learning App
+          Lock N Learn
         </h1>
       </header>
 
