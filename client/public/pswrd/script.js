@@ -16,7 +16,7 @@ const test = document.getElementById("test"), length = document.getElementById("
 let hashrate, color="";
   
 if(hashrate==undefined){
-  TTC.textContent="select a threat level";
+  TTC.textContent="Select a Threat Level";
 
   textInput.style.opacity=0;
 }
@@ -37,7 +37,7 @@ document.getElementById('hashrate').addEventListener('change', function () {
   
   switch (hashrate) {
 
-    case 10: attacker.textContent = "Bob"; hardware.textContent = "Smart Fridge"; threat.textContent = "Trivial"; bio.textContent = "An IoT device gone rouge. Minimal compute power, barely capable of hashing."; document.getElementById("attackerImg").src = "Trivial.png"; color="#1C4A7E";break;
+    case 10: attacker.textContent = "Bob"; hardware.textContent = "Smart Fridge"; threat.textContent = "Trivial"; bio.textContent = "An IoT device gone rouge. Minimal compute power, barely capable of hashing."; document.getElementById("attackerImg").src = "trivial.png"; color="#1C4A7E";break;
     
     case 100: attacker.textContent = "Luigi"; hardware.textContent = "Old Laptop"; threat.textContent = "Low"; bio.textContent = "Don't let the scary green skull fool you. It's a decade-old laptop running outdated software. Slow but persistent.";  document.getElementById("attackerImg").src = "luigi.png";color="#00ff66";  break;
     
@@ -94,7 +94,7 @@ custom.addEventListener('input', function() {
   hash.textContent=hashrate;
   textInput.dispatchEvent(new Event('input'));}
   else
-    tip.textContent="negative hashrates are prohibited. idk how that would even work"
+    tip.textContent="Negative hashrates are prohibited. Please enter a valid positive number.";
 
 });
 
@@ -256,13 +256,13 @@ console.log("match detected!");
 
 
 
-  special === true ? (specials.style.color = "", specials.style.opacity = "1", specials.textContent='✅ special characters') : (specials.style.color = "#999", specials.style.opacity = "0.6", specials.textContent="• special characters");
+  special === true ? (specials.style.color = "", specials.style.opacity = "1", specials.textContent='✅ Special characters') : (specials.style.color = "#999", specials.style.opacity = "0.6", specials.textContent="• Special characters");
 
-  num === true ? (nums.style.color = "", nums.style.opacity = "1", nums.textContent='✅ numbers') : (nums.style.color = "#999", nums.style.opacity = "0.6",nums.textContent="• numbers");
+  num === true ? (nums.style.color = "", nums.style.opacity = "1", nums.textContent='✅ Numbers') : (nums.style.color = "#999", nums.style.opacity = "0.6",nums.textContent="• Numbers");
 
-  upper === true ? (uppers.style.color = "", uppers.style.opacity = "1", uppers.textContent='✅ upper case letters') : (uppers.style.color = "#999", uppers.style.opacity = "0.6", uppers.textContent="• upper case letters");
+  upper === true ? (uppers.style.color = "", uppers.style.opacity = "1", uppers.textContent='✅ Upper case letters') : (uppers.style.color = "#999", uppers.style.opacity = "0.6", uppers.textContent="• Upper case letters");
 
-  lower === true ? (lowers.style.color = "", lowers.style.opacity = "1", lowers.textContent='✅ lower case letters') : (lowers.style.color = "#999", lowers.style.opacity = "0.6", lowers.textContent="• lower case letters");
+  lower === true ? (lowers.style.color = "", lowers.style.opacity = "1", lowers.textContent='✅ Lower case letters') : (lowers.style.color = "#999", lowers.style.opacity = "0.6", lowers.textContent="• Lower case letters");
 
 
   if(textInput.value.length==0){
@@ -271,7 +271,7 @@ console.log("match detected!");
   }
 
   else if (textInput.value.length<8) {
-    length.textContent = `password too short. consider making it longer `;
+    length.textContent = `Password is too short. Consider making it longer.`;
     minimum.style.color = "#999", minimum.style.opacity = "0.6",minimum.textContent="• 8 or more characters";
   }
 
@@ -283,32 +283,32 @@ console.log("match detected!");
 
 
 
-
-  if(textInput.value.length>3){
-    let key = `${+num}${+upper}${+lower}${+special}`;
-    switch (key) {
-    case "0001":
-    tip.textContent = "This is only specials characters. how are you even going to remember that";
-    break;
-    case "1000":
-    tip.textContent = "Its a password. Not a PIN number. Add some letters and special characters";
-    break;
-    case "1111":
-    tip.textContent = "Strong variety!";
-    break;
-    }
-  }
+  fetch("http://localhost:8080/api/password/check", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ password: textInput.value })
+  })
+  .then(response => response.text())
+  .then(message => {
+    tip.textContent = message;
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
   
-  if(entrop ===1) entropy.textContent = "Low entropy: weak and very predictable";
-  if(entrop ===2) entropy.textContent = "moderate entropy: some variety but still guessable";
-  if(entrop ===3) entropy.textContent = "High entropy: good mix of characters. harder to bute force";
-  if(entrop ===4) entropy.textContent = "Very high entropy: excellent diversity";
+  
+  if(entrop ===1) entropy.textContent = "Low entropy: Weak and very predictable";
+  if(entrop ===2) entropy.textContent = "Moderate entropy: Some variety but still guessable";
+  if(entrop ===3) entropy.textContent = "High entropy: good Mix of characters. Harder to brute force";
+  if(entrop ===4) entropy.textContent = "Very high entropy: Excellent diversity";
   if(entrop ===5) entropy.textContent = "Dictionary attack";
 
   entrop=0? entropy.style.opacity=0:entropy.style.opacity=1;
 
     if(score==0&&textInput.length>2){
-    tip.textContent=`this password is among the top 100,000 most common passwords. Try to be more creative`;
+    tip.textContent=`This password is among the top 100,000 most common passwords. Try to be more creative.`;
     length.textContent=``; entropy.textContent=``;
   }
   
