@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PSWRD - Password Strength Detector</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <iframe
+  src="https://threatseye.io/threats-map"
+  frameborder="0"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(8px);
+  " 
+  ></iframe>
+
+  <div class="chunky">
+  <div class="chunk">
+
+  <div class="sidebar" >
+    <div class="attacker-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="pic" style="display: flex; justify-content: center;" ><img id="attackerImg" src="default.png" width="100%" alt="Attacker" /></div>
+          <div class ="stats" style ="line-height: 0">
+          <p>Attacker: <span id="attacker" font-size="small">???</span></p>
+          <p id="hardware" font-size="small"><span>Hardware:</span> ???</p>
+          <p>Threat Level: <span id="threat" font-size="small">???</span></p>
+          <p>Hashrate: <span id="hash" font-size="small">???</span></p>
+          <hr>
+        </div>
+        <p id="bio" line-spacing="1"></p>
+        </div>
+        <div class="card-back">
+          <label for="hashrate">Threat Level:</label>
+          <select id="hashrate">
+            <option value="" disabled selected>Select a threat level</option>
+            <option value="10">Trivial</option>
+           <option value="100">Low</option>
+            <option value="1000">Moderate</option>
+            <option value="10000">Serious</option>
+            <option value="100000">Severe</option>
+           <option value="1000000">Critical</option>
+           <option value="10000000">Existential</option>
+           <option value="0"> Custom</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main">
+  
+    <h1 style="padding-bottom: 10px" id=" title">PASSWORD STRENGTH DETECTOR!</h1>
+    <input id="custom" type="number" style="width: 130px; display:none " placeholder="Set hashrate"/>
+
+
+    <!--
+   <textarea id="textInput" placeholder="Type something..."></textarea>
+   <button id="togglePassword">Show</button>
+   -->
+    <input type="password" id="textInput" placeholder="Enter password" style = "margin-top: 20px"/>
+   
+
+    <div style="padding-top: 50px"><span id="TTC">???</span></div>
+    <div id="arrow" style="transition: opacity 0.5s ease-in;font-size: 72px; color: white;">←</div>
+    <!-- <p id="test"></p> -->
+
+
+    <div style="padding-top: 50px"></div>
+    
+    <p id="bill" style=" transition: opacity 0.5s ease-in"><span id="chuck"></span><span id="outcome"></span></p>
+    <p id="chuck"></p>
+  
+  </div>
+
+
+  <div class="rightsidebar">
+   
+    <div class = "barContainer">
+      <div id="bar"></div>
+      <div class="details">
+        <p id="minimum" style="color: #999; opacity: 1; transition: opacity 0.5s ease-in"></p>
+        <p id="lowers" style="color: #999; opacity: 1; transition: opacity 0.5s ease-in"></p> 
+        <p id="uppers" style="color: #999; opacity: 1; transition: opacity 0.5s ease-in"></p> 
+        <p id="specials" style="color: #999; opacity: 1; transition: opacity 0.5s ease-in"></p> 
+        <p id="nums" style="color: #999; opacity: 1; transition: opacity 0.5s ease-in"></p>
+        <p id="score"><span id="test"></span></p>
+      </div>
+    </div> 
+
+    <div class="ugh" >
+    <div id="tip"></div>
+    <div id="charCount"></div>
+    <div id="length"></div>
+    <div id="entropy" style="transition: opacity 0.5s ease-in;"></div>
+
+    </div>
+    
+
+  </div>
+</div>
+  <div style= "padding-left:50%">
+  <button id="toggleBlurBtn"  onclick="toggleBlur()">🛰️</button> 
+  </div>
+</div>
+  
+
+
+<!--
+<div class = "options" style = "padding: 45px 10px;">
+<button style="font-family: 'Rouge Script';" id="scissors">✂️ Scissors</button>
+<button style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" id="paper">📄 Paper</button>
+<button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" id="rock">🪨 Rock</button>
+<button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" id="reset">🔄 Reset</button>
+</div> 
+
+
+<div class="results" style="display: none;">
+  <p>you chose <span id="choice"></span></p>
+  <p>computer chose <span id="CPUchoice"></span></p>
+  <p>result <span id="result"></span></p>
+  <p>Wins: <span id="Wins"></span></p>
+  <p>Losses: <span id="Losses"></span></p>
+  <p>Draws: <span id="ties"></span></p>
+</div>
+
+<audio id="victory" src="hit marker Sound Effect.mp3"></audio>
+<audio id="defeat" src="Roblox Death Sound - Sound Effect (HD).mp3"></audio>
+<audio id="draw!" src="Bonk Sound Effect #2.mp3"></audio>
+-->
+
+<script src="script.js"></script> <!-- External JavaScript file -->
+</body>
+</html>

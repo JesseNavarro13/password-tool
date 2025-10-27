@@ -299,10 +299,10 @@ console.log("match detected!");
     }
   }
   
-  if(entrop ===1) entropy.textContent = "Low entropy: Weak and very predictable";
-  if(entrop ===2) entropy.textContent = "moderate entropy: Some variety but still guessable";
-  if(entrop ===3) entropy.textContent = "High entropy: Good mix of characters. Harder to brute force";
-  if(entrop ===4) entropy.textContent = "Very high entropy: Excellent diversity";
+  if(entrop ===1) entropy.textContent = "Low entropy: weak and very predictable";
+  if(entrop ===2) entropy.textContent = "moderate entropy: some variety but still guessable";
+  if(entrop ===3) entropy.textContent = "High entropy: good mix of characters. harder to bute force";
+  if(entrop ===4) entropy.textContent = "Very high entropy: excellent diversity";
   if(entrop ===5) entropy.textContent = "Dictionary attack";
 
   entrop=0? entropy.style.opacity=0:entropy.style.opacity=1;
