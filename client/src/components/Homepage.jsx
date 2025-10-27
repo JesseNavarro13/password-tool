@@ -3,20 +3,6 @@ import React from "react";
 const Homepage = ({ onTabChange }) => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-      {/*Header*/}
-      <header className="flex justify-between items-center p-6 bg-black/20 backdrop-blur-md text-white shadow-2xl sticky top-0 z-50 border-b border-white/10">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          LockNLearn
-        </h1>
-        <nav>
-          <ul className="flex gap-6">
-            <li><button onClick={() => onTabChange('password')} className="hover:text-blue-300 transition-colors duration-300 font-medium">Password Strength</button></li>
-            <li><button onClick={() => onTabChange('cybersecurity')} className="hover:text-blue-300 transition-colors duration-300 font-medium">Cybersecurity Info</button></li>
-            <li><button onClick={() => onTabChange('cybersecurity')} className="hover:text-blue-300 transition-colors duration-300 font-medium">Quiz</button></li>
-            <li><button className="hover:text-gray-500 transition-colors duration-300 font-medium cursor-not-allowed opacity-50">Game (Coming Soon)</button></li>
-          </ul>
-        </nav>
-      </header>
 
       {/*Hero Section */}
       <section className="flex flex-col items-center justify-center text-center py-32 px-4 relative overflow-hidden">
@@ -56,7 +42,7 @@ const Homepage = ({ onTabChange }) => {
       {/* Features Section*/}
       <section className="py-24 px-4 relative">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          <h3 className="text-5xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             Features
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
