@@ -282,7 +282,7 @@ console.log("match detected!");
 
 
 
-
+// Send password to server for checking
   fetch("http://localhost:8080/api/password/check", {
     method: "POST",
     headers: {
@@ -301,7 +301,7 @@ console.log("match detected!");
   
   if(entrop ===1) entropy.textContent = "Low entropy: Weak and very predictable";
   if(entrop ===2) entropy.textContent = "Moderate entropy: Some variety but still guessable";
-  if(entrop ===3) entropy.textContent = "High entropy: good Mix of characters. Harder to brute force";
+  if(entrop ===3) entropy.textContent = "High entropy: Good mix of characters. Harder to brute force";
   if(entrop ===4) entropy.textContent = "Very high entropy: Excellent diversity";
   if(entrop ===5) entropy.textContent = "Dictionary attack";
 
