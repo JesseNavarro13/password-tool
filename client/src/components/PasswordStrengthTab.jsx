@@ -1,8 +1,34 @@
 import React from 'react';
 
 const PasswordStrengthTab = () => {
+  const [openSection, setOpenSection] = React.useState(null);
+
+  // Password FAQ sections
+  const sections = [
+    {
+      title: 'Is it safe to use this password strength checker and can I trust it with my passwords?',
+      content: 'Yes, our password strength checker is designed with user privacy in mind. Passwords are analyzed locally in your browser and are not sent to any server or stored anywhere.'
+    },
+    {
+      title: 'How does your tool assess password strength?',
+      content: 'Our tool analyzes passwords based on length, complexity, common patterns, and estimated time to crack using various attack methods. It provides a strength score and suggestions for improvement.'
+    },
+    {
+      title: 'Why is password strength important?',
+      content: 'Strong passwords protect your accounts from unauthorized access and potential data breaches. Weak passwords can be easily cracked by attackers using various techniques.'
+    },
+    {
+      title: 'How to create a strong password?',
+      content: 'Use a combination of uppercase and lowercase letters, numbers, and special characters. Avoid common words, phrases, or easily guessable information like birthdays.'
+    },
+    {
+      title: 'Can I use this tool for multiple passwords?',
+      content: 'Absolutely! You can test as many passwords as you like to evaluate their strength and get feedback on how to improve them.'
+    },
+  ];
+
+  // Open the standalone pswrd page in a new tab
   const handleOpenPswrd = () => {
-    // Open the standalone pswrd page in a new tab
     const currentOrigin = window.location.origin;
     const pswrdUrl = `${currentOrigin}/pswrd/index.html`;
     console.log('Attempting to open:', pswrdUrl);
@@ -61,6 +87,46 @@ const PasswordStrengthTab = () => {
                     /pswrd/index.html
                   </a>
                 </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Password FAQ Section */}
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl mt-12">
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Password Security FAQ
+              </h3>
+              <p className="text-gray-300 mb-8 text-center">
+                Most common questions about password security and our tool:
+              </p>
+
+              <div className="space-y-4">
+                {sections.map((section, index) => (
+                <div key={index} className="group">
+                  <button
+                    onClick={() => setOpenSection(openSection === index ? null : index)}
+                    className="w-full p-6 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-blue-400/50 rounded-xl transition-all duration-300 text-left"
+                  >
+                    <div className = "flex justify-between items-center">
+                      <h4 className="text-lg font-semibold text-white pr-4">
+                        {section.title}
+                      </h4>
+                      <div className="text-2xl text-blue-400 transition-transform duration-300 group-hover:scale-110">
+                        {openSection === index ? "▲" : "▼"}
+                      </div>
+                    </div>
+                  </button>
+                  
+                  {openSection === index && (
+                    <div className="mt-2 p-6 bg-white/5 border border-white/10 rounded-xl animate-fade-in-up">
+                      <div className="text-gray-300 leading-relaxed">
+                        {section.content}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
               </div>
             </div>
           </div>
