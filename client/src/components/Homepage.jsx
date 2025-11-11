@@ -12,7 +12,7 @@ const Homepage = ({ onTabChange }) => {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
         
         <div className="relative z-10">
-          <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">
+          <h2 className="text-5xl md:text-7xl font-bold mb-6 mt-0 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">
             Learn, Play & Secure Your Digital Life
           </h2>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl text-gray-300 leading-relaxed text-center mx-auto">
@@ -42,7 +42,7 @@ const Homepage = ({ onTabChange }) => {
       {/* Features Section*/}
       <section className="py-24 px-4 relative">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-5xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          <h3 className="text-5xl md:text-5xl font-bold text-center mb-16 mt-5 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             Features
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
