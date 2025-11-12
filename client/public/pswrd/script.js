@@ -282,7 +282,7 @@ console.log("match detected!");
 
 
 
-// Send password to server for checking
+  // Send password to server for checking
   fetch("http://localhost:8080/api/password/check", {
     method: "POST",
     headers: {
@@ -297,8 +297,7 @@ console.log("match detected!");
   .catch(error => {
     console.error("Error:", error);
   });
-  
-  
+
   if(entrop ===1) entropy.textContent = "Low entropy: Weak and very predictable";
   if(entrop ===2) entropy.textContent = "Moderate entropy: Some variety but still guessable";
   if(entrop ===3) entropy.textContent = "High entropy: Good mix of characters. Harder to brute force";
@@ -314,7 +313,59 @@ console.log("match detected!");
   
 });
 
+// Send password to server for pattern analysis
+  document.getElementById("analyzeBtn").addEventListener("click", async () => {
+    const password = document.getElementById("textInput").value;
+    const resultsDiv = document.getElementById("analysisResult");
 
+    if (!password.trim()) {
+      resultsDiv.innerHTML = "<p style='color:red;'>Please enter a password to analyze.</p>";
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:8080/api/analyze/patterns", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ password })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      let html = `
+        <h3>Pattern Analysis Results:</h3>
+        <h4>Detected Segments:</h4>
+      `;
+
+      let weaknessFound = false;
+
+      data.segments.forEach(seg => {
+        html += `<div>${seg.text} → ${seg.type} (${seg.weakness || "No weakness"})</div>`;
+        if (seg.weakness) {
+          weaknessFound = true;
+        }
+      });
+
+      if (weaknessFound) {
+        html += `<h4 style="color:orange;">Your password contains common words or patterns. This may make it easier to crack. In order to improve password security, consider avoiding common words and patterns.</h4>
+        `;
+      } else {
+        html += `<h4 style="color:green;">No common words or patterns detected.</h4>
+        `;
+      }
+
+      resultsDiv.innerHTML = html;
+    } catch (error) {
+      console.error("Error during pattern analysis:", error);
+      resultsDiv.innerHTML = "<p style='color:red;'>An error occurred while analyzing the password.</p>";
+    }
+  });
 
 /////////////////////////////////////////
 
@@ -361,116 +412,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 });
-
-
-
-/*
-
-let wins =0, losses =0, ties =0;
-
-document.getElementById("rock").addEventListener("click", () => {
-  document.getElementById("choice").textContent="rock";
-  game(2);
-});
-
-document.getElementById("scissors").addEventListener("click", () => {
-  document.getElementById("choice").textContent="scissors";
-  game(8);
-});
-
-document.getElementById("paper").addEventListener("click", () => {
-  document.getElementById("choice").textContent="paper";
-  game(4);
-});
-
-document.getElementById("reset").addEventListener("click", () => {
-  let msg ="?", CPU="?";
-  wins =0;
-   losses = 0;
-    ties = 0;
-  document.body.style.backgroundColor = "white"; 
-  document.getElementById("choice").textContent="?"; 
-  setTimeout(() => {
-    document.getElementById("result").textContent=msg;
-    document.getElementById("CPUchoice").textContent=CPU;
-    document.getElementById("Wins").textContent=wins;
-    document.getElementById("Losses").textContent=losses;
-    document.getElementById("ties").textContent=ties;},50);
-
-});
-
-let on = true;
-document.getElementById("theme").addEventListener("click", () => {
-
-  if (on){
-    document.body.style.backgroundColor = "#333333";  
-    document.body.style.color = "white";  
-  }
-  else{
-  document.body.style.backgroundColor = "white";
-  document.body.style.color = "black";  
-}
-on=!on
-});
-
-function randy(min,max){
-  min = Math.ceil(min);
-  max=Math.floor(max);
-  return Math.floor(Math.random()*(max - min +1))
-}
-
-let audio = new Audio("audiofile.mp3");
-
-function game(choice){ 
-  document.querySelector(".results").style.display = document.querySelector(".results").style.display ==="none"?"block":"block";
-
-  let rand = 2**(randy(1,3)+1);
-  //document.getElementById("test2").textContent= parseInt(rand, 10);
-  let CPU; 
-  
-  switch(rand) {
-    case 2: 
-    CPU="rock";
-    break;
-
-    case 4: 
-    CPU="paper";
-    break;
-
-    case 8: 
-    CPU="scissors";
-    break;
-  }
-
-  let result = (choice-rand)%2;  
-  let msg;
-  //document.getElementById("test3").textContent= parseInt((1-rand)%2, 10);
-
-  if(choice==2*rand||rand==4*choice){
-    msg ="Victory!";
-    wins++;
-    document.body.style.backgroundColor = "green"; 
-    audio = document.getElementById("victory");
-  }
-  else if (rand==choice){
-    msg ="Draw"
-    ties++;
-    document.body.style.backgroundColor = "gray";  
-    audio = document.getElementById("draw!");
-   
-  }
-    else{
-    msg="Defeat";
-    losses++;
-    document.body.style.backgroundColor = "red"; 
-    audio = document.getElementById("defeat");
-  }
-
-  audio.play();
-
-  document.getElementById("result").textContent=msg;
-  document.getElementById("CPUchoice").textContent=CPU;
-  document.getElementById("Wins").textContent=wins;
-  document.getElementById("Losses").textContent=losses;
-  document.getElementById("ties").textContent=ties;
-}*/

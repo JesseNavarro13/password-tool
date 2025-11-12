@@ -24,13 +24,13 @@ public class PasswordController {
         message = "Start typing to check password strength";
         break;
       case "0001":
-        message = "This is only special characters. How are you even supposed to remember that? Add some letters and numbers.";
+        message = "This is only special characters. That can be hard to remember. Make sure to add some letters and numbers.";
         break;
       case "0010":
         message = "This is only lowercase letters. Don't be shy, add some uppercase letters, numbers and special characters.";
         break;
       case "0100":
-        message = "This is only uppercase letters. Who are you yelling at? Add some lowercase letters, numbers and special characters.";
+        message = "This is only uppercase letters. Did you forget to turn off caps lock? Add some lowercase letters, numbers and special characters.";
         break;
       case "1000":
         message = "This is only numbers. This is a password not a PIN number, try adding some letters and special characters.";
