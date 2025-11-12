@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PSWRD - Password Strength Detector</title>
+  <title>Password Strength Detector</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,8 +72,6 @@
    <button id="togglePassword">Show</button>
    -->
     <input type="password" id="textInput" placeholder="Enter password" style = "margin-top: 20px"/>
-   
-
     <div style="padding-top: 50px"><span id="TTC">???</span></div>
     <div id="arrow" style="transition: opacity 0.5s ease-in;font-size: 72px; color: white;">←</div>
     <!-- <p id="test"></p> -->
@@ -83,7 +81,10 @@
     
     <p id="bill" style=" transition: opacity 0.5s ease-in"><span id="chuck"></span><span id="outcome"></span></p>
     <p id="chuck"></p>
-  
+
+    <button id="analyzeBtn">Analyze Password</button>
+    <div id="analysisResult"></div>
+
   </div>
 
 
@@ -116,31 +117,6 @@
   <button id="toggleBlurBtn"  onclick="toggleBlur()">🛰️</button> 
   </div>
 </div>
-  
-
-
-<!--
-<div class = "options" style = "padding: 45px 10px;">
-<button style="font-family: 'Rouge Script';" id="scissors">✂️ Scissors</button>
-<button style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" id="paper">📄 Paper</button>
-<button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" id="rock">🪨 Rock</button>
-<button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" id="reset">🔄 Reset</button>
-</div> 
-
-
-<div class="results" style="display: none;">
-  <p>you chose <span id="choice"></span></p>
-  <p>computer chose <span id="CPUchoice"></span></p>
-  <p>result <span id="result"></span></p>
-  <p>Wins: <span id="Wins"></span></p>
-  <p>Losses: <span id="Losses"></span></p>
-  <p>Draws: <span id="ties"></span></p>
-</div>
-
-<audio id="victory" src="hit marker Sound Effect.mp3"></audio>
-<audio id="defeat" src="Roblox Death Sound - Sound Effect (HD).mp3"></audio>
-<audio id="draw!" src="Bonk Sound Effect #2.mp3"></audio>
--->
 
 <script src="script.js"></script> <!-- External JavaScript file -->
 </body>
