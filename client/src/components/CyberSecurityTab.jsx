@@ -22,7 +22,7 @@
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
-            <h2 className="text-5xl md:text-5xl font-bold h-14 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+            <h2 className="text-5xl md:text-5xl font-bold h-14 bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-4">
               Cybersecurity Information
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -31,7 +31,7 @@
           </div>
 
           {/* Information Sections */}
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl mb-12">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl mb-12 max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Cybersecurity Topics
             </h3>

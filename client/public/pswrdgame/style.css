@@ -1,14 +1,20 @@
 body {
-  background-color: #121212;
+  background-color: #F2F1E6
+;
+
+;/* #121212;*/
+  justify-content: center; /* horizontal */
+   /* align-items: center;     vertical */
+  height: 200px;        
   /*
     background-image: url("background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-  */
-  color: #eee;
-  display: flex;
   flex-direction: row;
+  */
+  color: black;
+  display: flex;
   height: 100vh;
   margin: 0;
   font-family: system-ui, sans-serif;
@@ -74,89 +80,26 @@ body {
   font-size: medium;
 }
 
-.card-back {
-  background-color: #1f1f1f;
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  /*justify-content: center;*/
-  align-items: center;
+#container > div {
+  transition: transform 300ms ease, opacity 300ms ease;
+  position: relative;
 }
 
 .main {
- /* flex: 1;*/
-  padding: 38px;
+ /* flex: 1;
+  padding: 38px;*/
   display: flex;
   flex-direction: column;
   align-items: center;  
-  order: 2;
-  height: 100%;
-  width:50%;
+ 
+ /* height: 100%;
+  /*width:50%;*/
 
 }
 
-h1 {
-  text-align: center;
-  color: #00f0ff;
-  margin-bottom: 20px;
-}
-
-#toggleBlurBtn{
-  background-color: rgba(0, 0, 0, 0.3); /* semi-transparent black */
-  color: white;
-}
-.rightsidebar {
-  display: flex;
-  width: 400px;
-  height: 100%;
-  flex-direction: column;
-  order: 3;
-}
-.barContainer{
-padding-top: 20%;
-order:1;
-display:flex;
-justify-content: space-between;
-width: 100%;
-height: 50%;
-position: relative;
-min-height: 150px;
-/*overflow: hidden;*/
-}
-
-#bar{
-  
-  border-radius: 4px;
-  bottom: 0;
-  position: absolute;
-  width: 70px;
-  background: red;
-  transition: height 0.3s ease, background 0.3s ease;
-  order:1;
-}
-
-#analysisResult {
-  display: none;
-  min-height: 200px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  margin-top: 15px;
-  background: #3f4041;
-  text-align: left;
-}
-
-.details{
-  padding-top: 100px;
-  padding-left: 100px;
-  order: 2;
-  flex-grow: 1;
-  line-height: 0;
-  justify-content: center;
-}
 
 
-.ugh{order:2}
+
 
 
 

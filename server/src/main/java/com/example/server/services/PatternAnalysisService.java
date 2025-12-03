@@ -21,7 +21,7 @@ public class PatternAnalysisService {
   private void loadLists() {
      try { 
       loadLinesIntoList("/services/keyboard_patterns.txt", KEYBOARD_PATTERNS);
-      loadCommonPasswords("/services/100000-most-common-passwords.json");
+      loadCommonPasswords("/services/10000-most-common-passwords.json");
       System.out.println("Loaded " + KEYBOARD_PATTERNS.size() + " keyboard patterns.");
       System.out.println("Loaded " + COMMON_WORDS.size() + " common passwords/words.");
      } catch (IOException e) {
@@ -98,16 +98,16 @@ public class PatternAnalysisService {
   
   private String classifySegment(String token) {
     if(token.matches("[A-Za-z]+")) {
-      return "letters";
+      return "Letters";
     } else if(token.matches("\\d+")) {
-      return "digits";
+      return "Digits";
     } else {
-      return "symbols";
+      return "Symbols";
     }
   }
 
   private String detectWeakness(String token, String type) {
-    if (type.equals("letters")) {
+    if (type.equals("Letters")) {
       String lower = token.toLowerCase();
       if (isSequentialLetters(lower)) {
         return "Sequential pattern";
@@ -119,7 +119,7 @@ public class PatternAnalysisService {
         return "Common word/password";
       }
     }
-    if (type.equals("digits")) {
+    if (type.equals("Digits")) {
       if (token.matches("(19|20)\\d{2}")) {
         return "Year pattern";
       }

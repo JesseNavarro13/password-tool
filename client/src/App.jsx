@@ -4,6 +4,7 @@ import './index.css';
 import Homepage from './components/Homepage';
 import PasswordStrengthTab from './components/PasswordStrengthTab';
 import CyberSecurityTab from './components/CyberSecurityTab';
+import PasswordGameTab from './components/PasswordGameTab';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -20,10 +21,25 @@ function App() {
   const [selectedAnswer, setSelectedAnswer] = useState("");
 
   const tabs = [
-    { id: 'password', label: 'Password Strength Checker' },
-    { id: 'home', label: 'Home'},
-    { id: 'cybersecurity', label: 'Cybersecurity Info' },
+    { id: 'home', label: '🏠 Home' },
+    { id: 'password', label: '🔐 Password Strength' },
+    { id: 'cybersecurity', label: '🧠 Cybersecurity' },
+    { id: 'game', label: '🎮 Password Game' },
   ];
+
+  const getActiveTabGradient = (tabId) => {
+    switch (tabId) {
+      case 'password':
+        return 'bg-gradient-to-r from-blue-600 to-purple-600';
+      case 'cybersecurity':
+        return 'bg-gradient-to-r from-green-600 to-emerald-600';
+      case 'game':
+        return 'bg-gradient-to-r from-red-600 to-orange-500';
+      case 'home':
+      default:
+        return 'bg-gradient-to-r from-slate-600 to-indigo-600';
+    }
+  };
 
   // Cybersecurity Info Tab Sections
   const sections = [
@@ -219,7 +235,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
       {/* Header */}
       <header className="w-full p-6 text-center bg-black/20 backdrop-blur-md border-b border-white/10">
-        <h1 className="text-7xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg">
+        <h1 className="brand-title text-7xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg">
           Lock N Learn
         </h1>
       </header>
@@ -227,19 +243,22 @@ function App() {
       {/* Tabs Menu */}
       <div className="flex justify-center p-6">
         <div className="flex gap-2 bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                activeTab === tab.id 
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-105" 
-                  : "text-gray-300 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  isActive 
+                    ? `${getActiveTabGradient(tab.id)} text-white shadow-lg transform scale-105` 
+                    : "text-gray-300 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -271,6 +290,9 @@ function App() {
             quizCompleted={quizCompleted}
           />
         )}
+
+        {/* Password Game Tab */}
+        {activeTab === 'game' && <PasswordGameTab/>}
       </div>
     </div>    
   );
