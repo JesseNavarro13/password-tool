@@ -21,10 +21,6 @@ const PasswordStrengthTab = () => {
       title: 'How to create a strong password?',
       content: 'Use a combination of uppercase and lowercase letters, numbers, and special characters. Avoid common words, phrases, or easily guessable information like birthdays.'
     },
-    {
-      title: 'Can I use this tool for multiple passwords?',
-      content: 'Absolutely! You can test as many passwords as you like to evaluate their strength and get feedback on how to improve them.'
-    },
   ];
 
   // Open the standalone pswrd page in a new tab
@@ -126,7 +122,10 @@ const PasswordStrengthTab = () => {
                     </div>
                   )}
                 </div>
-              ))}
+                ))}
+                <p className="text-sm text-gray-400 mb-2">
+                Disclaimer: Password strength results and attacker simulations are approximations and should be used as guidelines rather than definitive measures. The password cracking simulation is for educational purposes only. All analyses are performed locally in your browser to ensure privacy.
+                </p>
               </div>
             </div>
           </div>

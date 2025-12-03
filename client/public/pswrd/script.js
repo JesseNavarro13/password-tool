@@ -361,8 +361,10 @@ console.log("match detected!");
       }
 
       resultsDiv.innerHTML = html;
+      resultsDiv.style.display = "block";
     } catch (error) {
       console.error("Error during pattern analysis:", error);
+      resultsDiv.style.display = "block";
       resultsDiv.innerHTML = "<p style='color:red;'>An error occurred while analyzing the password.</p>";
     }
   });

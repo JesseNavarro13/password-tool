@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PSWRDGAME</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="main" >
+
+    <h1 id ="title" style="font-size: xx-large; font-family: 'Courier New', Courier, monospace;
+    ">Password Game</h1>
+    <p id="timerDisplay" style="opacity:0"></p>
+     
+    <div>
+      <input type="password" id="textInput" placeholder="Please enter a password..." style = "margin-top: 20px"/>
+      <button onclick="showHide()" id="showhide" style = "background: none" hidden="true">👀</button>
+    </div>
+
+    <div id = "joke" style="margin-top: 20px; width: 500px; height: 150px; padding: 15px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; overflow: hidden;">
+     <button onclick="getJoke()" style="padding: 8px 16px; margin-bottom: 10px; cursor: pointer;">Get Joke</button>
+      <p id="setup" style="margin: 8px 0; word-wrap: break-word; min-height: 1.2em; text-align: center; width: 100%; overflow-wrap: break-word;"></p>
+      <p id="punchline" style="margin: 8px 0; word-wrap: break-word; min-height: 1.2em; font-weight: bold; text-align: center; width: 100%; overflow-wrap: break-word;"></p>
+    </div>
+
+    <button id = "proceed" onclick=
+      "document.getElementById('confirm').hidden = false;
+      document.getElementById('proceed').hidden = true;
+      document.getElementById('textInput').readOnly = true;
+      document.getElementById('container').hidden = true;"
+      hidden>Continue
+    </button>
+
+    <div id="container" width="100%">
+
+      <div id="rule1" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden>
+        <u id= "r1" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        your password must be at least 3 characters long</p>
+      </div>
+
+      <div id="rule2" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r2" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        your password must include a capital letter</p>
+      </div>
+
+      <div id="rule3" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r3" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        your password must include a special character</p>
+      </div>
+
+      <div id="rule4" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r4" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        your password must include numbers</p>
+      </div>
+
+      <div id="rule5" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r5" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        your password must include todays date </p>
+      </div>
+
+      <div id="rule6" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r6" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        the digits of your password must add up to 85</p>
+        <p >total: <span id = "total"></span></p>
+      </div>
+
+
+      <div id="rule7" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px; " hidden="true" >
+        <u id= "r7" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        your password must include roman numerals</p>
+      </div>
+
+      <div id="rule8" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px; " hidden="true" >
+        <u id= "r8" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        The roman numerals in your password must add up to 1000</p>
+        <p id = "numeralSum" style="padding-inline: 10px; text-align:center"></p>
+        <p id = "numerals" style="padding-inline: 10px; text-align:center"></p>
+      </div>
+      
+      <!--test-->
+
+      <div id="rule9" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r9" style="padding-left: 10px"></u><p style="padding-inline: 10px; text-align:center">
+        your password must include your favorite powerpuff girl </p>
+      </div>
+
+      <div id="rule10" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px; " hidden="true" >
+        <u id= "r10" style="padding-left: 10px"></u>
+        <div id = "randColor" style="width: 90%; height: 100px; opacity: 1;  padding-inline: 5%; "></div>
+        <p id = "hexText" style="padding-inline: 10px; text-align:center">
+        your password must include the hex value of this color</p>
+      </div>
+
+      <div id="rule11" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r11" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        your password must include the country code of <span id="country"></span></p>
+        <!--<p id="CC">test</p>-->
+      </div>
+
+      <div id="rule12" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r12" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        Your password isn't strong enough🏋️</p>
+      </div>
+
+      <div id="rule13" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r13" style="padding-left: 10px"></u>
+        <div id = "randColor" style="width: 25px; height: 10px; opacity: 1"></div>
+        <p style="padding-inline: 10px; text-align:center"> Your password must include the solution to the following riddle</p>
+        <p style="padding-inline: 10px; text-align:center" id ="riddl"></p>
+      </div>
+
+      <div id="rule14" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+       <u id= "r14" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center">
+        your password must contain the length of your password</p>
+        <p id ="lengthy"></p>
+      </div>
+      
+      <div id="rule15" style= "border: 2px solid black;background-color:rgb(244,233,216); border-radius: 10px;" hidden="true" >
+        <u id= "r15" style="padding-left: 10px"></u>
+        <p style="padding-inline: 10px; text-align:center" id = "Ascii"></p>
+      </div>
+
+    </div>
+    <!-- <button id = "Continue" hidden = "true" onclick="getJoke()">Continue</button> -->
+    <div id = "next" hidden style="margin-top: 75px;">
+      <div id = "confirm" hidden="true" >
+        <p>Are you sure you want to set your password as</p>
+        <p id = "pswrd"></p>
+        <button id = "yes" onclick="document.getElementById('reType').hidden = false">yes</button>
+        <button id = "no" onclick="document.getElementById('confirm').hidden = true;
+        textInput.dispatchEvent(new Event('input'))">No</button>
+      </div>
+
+      <div id = "reType" hidden="true" >
+        <p>Please re-enter your password</p>
+        <input type="password" id="pswrdAgain" placeholder="Enter password again" style = "margin-top: 20px"/>
+        <button onclick="showHide()" id="showhide2" style = "background: none" hidden="true">👀</button>
+
+        <button onclick="verify()" id="verifyBtn" style = "background: none; padding: 8px 16px; border: 1px solid black; border-radius: 5px; cursor: pointer;" >verify</button>
+        
+      </div>
+    </div>
+    <p id ="results" style="font-size: larger;"></p>
+    
+    <!-- Completion Popup Modal -->
+    <div id="completionModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000;">
+      <div style="background-color: rgb(244,233,216); padding: 30px; border-radius: 15px; border: 3px solid black; max-width: 500px; width: 90%; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+        <h2 style="font-size: 2em; margin-bottom: 20px; font-family: 'Courier New', Courier, monospace;">🎉 Congratulations! 🎉</h2>
+        <p style="font-size: 1.3em; margin-bottom: 15px;">You completed the password game!</p>
+        <p style="font-size: 1.5em; font-weight: bold; margin-bottom: 20px; color: #0066cc;">
+          Time: <span id="modalTime"></span>
+        </p>
+        <div id="highScoreMessage" style="display: none; margin-bottom: 20px;">
+          <p id="highScoreText" style="font-size: 1.2em; font-weight: bold; color: #ff6600;"></p>
+        </div>
+        <button onclick="closeCompletionModal()" style="padding: 12px 30px; background-color: #0066cc; color: white; border: none; border-radius: 8px; font-size: 1.1em; cursor: pointer; font-weight: bold;">
+          Awesome!
+        </button>
+      </div>
+    </div>
+    
+    <div id="highScoresSection" style="margin-top: 30px; padding: 20px; border: 2px solid black; background-color: rgb(244,233,216); border-radius: 10px; width: 500px; min-height: 150px; box-sizing: border-box;">
+      <h2 style="text-align: center; margin-bottom: 15px; font-family: 'Courier New', Courier, monospace;">🏆 High Scores</h2>
+      <div id="highScoresList" style="text-align: center;">
+        <p style="color: #666;">No scores yet. Complete the game to set your first high score!</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="script.js"></script> <!-- External JavaScript file -->
+</html>

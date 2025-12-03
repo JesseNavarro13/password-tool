@@ -35,6 +35,14 @@ const Homepage = ({ onTabChange }) => {
                 </svg>
               </span>
             </button> 
+            <button onClick={() => onTabChange('game')} className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl shadow-2xl hover:from-red-500 hover:to-red-600 transition-all duration-300 transform hover:scale-105 hover:shadow-green-500/25 font-semibold text-lg">
+              <span className="flex items-center justify-center gap-2">
+                🎮 Play Password Game
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </button> 
           </div>
         </div>
       </section>
@@ -78,16 +86,16 @@ const Homepage = ({ onTabChange }) => {
             </div>
 
             {/* Game Card */}
-            <div className="group p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 opacity-75">
+            <div className="group p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl hover:shadow-green-500/20 transition-all duration-500 transform hover:scale-105 border border-white/20 hover:border-red-400/50 cursor-pointer" onClick={() => onTabChange('game')}>
               <div className="text-4xl mb-4">🎮</div>
               <h4 className="text-2xl font-bold mb-4 text-white">Password Game</h4>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Play a fun and interactive game to practice creating strong passwords and learn best security practices.
+                Race against the clock in a chaotic password game with escalating rules and try to set a new high score.
               </p>
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-700 text-white rounded-lg font-semibold cursor-not-allowed">
-                Coming Soon
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg hover:from-red-500 hover:to-red-600 transition-all duration-300 font-semibold group">
+                Play Game
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </div>
             </div>
@@ -103,7 +111,7 @@ const Homepage = ({ onTabChange }) => {
             <li><button onClick={() => onTabChange('password')} className="hover:text-blue-300 transition-colors duration-300 font-medium">Password Strength</button></li>
             <li><button onClick={() => onTabChange('cybersecurity')} className="hover:text-blue-300 transition-colors duration-300 font-medium">Cybersecurity Info</button></li>
             <li><button onClick={() => onTabChange('cybersecurity')} className="hover:text-blue-300 transition-colors duration-300 font-medium">Quiz</button></li>
-            <li><button className="hover:text-gray-500 transition-colors duration-300 font-medium cursor-not-allowed opacity-50">Game (Coming Soon)</button></li>
+            <li><button onClick={() => onTabChange('game')} className="hover:text-blue-300 transition-colors duration-300 font-medium">Game</button></li>
           </ul>
         </div>
       </footer>
