@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.export = {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,16 +8,30 @@ module.export = {
   theme: {
     extend: {
       colors: {
-        brandBlue: '#2badd1',
-        darkBg: '#373f47',
-        darkCard: '#2f4858',
-        lightCard: '#f9f9f9',
+        primary: {
+          50: '#e6f0f3',
+          100: '#b3d4dd',
+          200: '#80b8c7',
+          300: '#4d9cb1',
+          400: '#1a809b',
+          500: '#25526b', // Base color
+          600: '#1e4256',
+          700: '#173241',
+          800: '#10222c',
+          900: '#091217',
+        },
+        accent: {
+          light: '#4fa3b8',
+          DEFAULT: '#3a7a8f',
+          dark: '#2d6b7f',
+        },
       },
       fontFamily: {
-        sans: ['system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
       },
       boxShadow: {
-        strong: '4px 4px 6px rgba(0,0,0,0.8)',
+        'soft': '0 4px 20px rgba(37, 82, 107, 0.15)',
+        'glow': '0 0 20px rgba(37, 82, 107, 0.3)',
       },
     },
   },

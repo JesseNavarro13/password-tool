@@ -1,38 +1,49 @@
 body {
-  background-color: #121212;
-  /*
-    background-image: url("background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  */
-  color: #eee;
+  background: linear-gradient(135deg, #0f1a20 0%, #1a2f3a 50%, #25526b 100%);
+  color: #ffffff;
   display: flex;
-  flex-direction: row;
-  height: 100vh;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+
+.chunky {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: center;
 }
 
 .chunk {
-  height:"90%";
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
   transition: all 0.3s ease;
-
-  /*transition: opacity 0.5s ease;*/
+  max-width: 1400px;
+  width: 100%;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
 .sidebar {
   width: 250px;
-  /*background-color: gray;*/
   order: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(37, 82, 107, 0.15);
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
 }
 
 .attacker-card {
@@ -65,52 +76,80 @@ body {
 }
 
 .card-front {
-  border: solid;
-  background-color: #2a2a2a;
+  border: 2px solid rgba(79, 163, 184, 0.3);
+  background: rgba(37, 82, 107, 0.3);
+  backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /*justify-content: left;*/
   font-size: medium;
+  color: #ffffff;
 }
 
 .card-back {
-  background-color: #1f1f1f;
+  background: rgba(37, 82, 107, 0.3);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(79, 163, 184, 0.3);
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
-  /*justify-content: center;*/
   align-items: center;
+  color: #ffffff;
+  font-size: 0.9em;
+}
+
+.card-back label {
+  font-size: 0.9em;
+  margin-bottom: 10px;
 }
 
 .main {
- /* flex: 1;*/
   padding: 38px;
   display: flex;
   flex-direction: column;
   align-items: center;  
   order: 2;
-  height: 100%;
-  width:50%;
-
+  flex: 1;
+  min-width: 400px;
+  max-width: 600px;
 }
 
 h1 {
   text-align: center;
-  color: #00f0ff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #4fa3b8, #ffffff, #4fa3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(79, 163, 184, 0.3);
 }
 
 #toggleBlurBtn{
-  background-color: rgba(0, 0, 0, 0.3); /* semi-transparent black */
+  background: rgba(37, 82, 107, 0.3);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(79, 163, 184, 0.3);
   color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#toggleBlurBtn:hover {
+  border-color: rgba(79, 163, 184, 0.6);
+  background: rgba(37, 82, 107, 0.5);
 }
 .rightsidebar {
   display: flex;
   width: 400px;
-  height: 100%;
+  min-height: 500px;
   flex-direction: column;
   order: 3;
+  align-self: flex-start;
 }
 .barContainer{
 padding-top: 20%;
@@ -138,12 +177,17 @@ min-height: 150px;
 #analysisResult {
   display: none;
   min-height: 200px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 2px solid rgba(79, 163, 184, 0.3);
+  border-radius: 12px;
   padding: 15px;
   margin-top: 15px;
-  background: #3f4041;
+  background: rgba(37, 82, 107, 0.3);
+  backdrop-filter: blur(12px);
   text-align: left;
+  color: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
 }
 
 .details{
@@ -156,7 +200,88 @@ min-height: 150px;
 }
 
 
-.ugh{order:2}
+.ugh{
+  order:2;
+  color: #ffffff;
+}
+
+/* Input and button styling to match homepage */
+#textInput, #custom {
+  padding: 12px 16px;
+  border: 2px solid rgba(79, 163, 184, 0.3);
+  border-radius: 8px;
+  background: rgba(37, 82, 107, 0.3);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+}
+
+#textInput:focus, #custom:focus {
+  outline: none;
+  border-color: rgba(79, 163, 184, 0.6);
+  box-shadow: 0 0 20px rgba(79, 163, 184, 0.3);
+}
+
+#textInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#analyzeBtn, select {
+  padding: 12px 24px;
+  border: 2px solid rgba(79, 163, 184, 0.3);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #25526b, #3a7a8f);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+#analyzeBtn:hover, select:hover {
+  border-color: rgba(79, 163, 184, 0.6);
+  background: linear-gradient(135deg, #3a7a8f, #4fa3b8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(79, 163, 184, 0.3);
+}
+
+select {
+  background: rgba(37, 82, 107, 0.3);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+  padding: 10px 15px;
+  width: 100%;
+  max-width: 200px;
+  font-size: 0.85em;
+}
+
+.card-back select {
+  font-size: 0.8em;
+  padding: 8px 12px;
+  max-width: 180px;
+}
+
+select option {
+  background: #1a2f3a;
+  color: #ffffff;
+}
+
+#TTC, #bill, #chuck, #outcome, .details p, #tip, #charCount, #length, #entropy {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+#TTC {
+  font-size: 24px;
+  font-weight: 600;
+  color: #4fa3b8;
+}
 
 
 

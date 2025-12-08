@@ -5,6 +5,7 @@ import Homepage from './components/Homepage';
 import PasswordStrengthTab from './components/PasswordStrengthTab';
 import CyberSecurityTab from './components/CyberSecurityTab';
 import PasswordGameTab from './components/PasswordGameTab';
+import lockIcon from './assets/lock-circle-icon-cropped.png';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -30,14 +31,14 @@ function App() {
   const getActiveTabGradient = (tabId) => {
     switch (tabId) {
       case 'password':
-        return 'bg-gradient-to-r from-blue-600 to-purple-600';
+        return 'bg-gradient-to-r from-primary-500 to-primary-600';
       case 'cybersecurity':
-        return 'bg-gradient-to-r from-green-600 to-emerald-600';
+        return 'bg-gradient-to-r from-accent-light to-primary-500';
       case 'game':
-        return 'bg-gradient-to-r from-red-600 to-orange-500';
+        return 'bg-gradient-to-r from-primary-600 to-accent-dark';
       case 'home':
       default:
-        return 'bg-gradient-to-r from-slate-600 to-indigo-600';
+        return 'bg-gradient-to-r from-primary-600 to-primary-700';
     }
   };
 
@@ -232,27 +233,38 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+    <div className="min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700">
       {/* Header */}
-      <header className="w-full p-6 text-center bg-black/20 backdrop-blur-md border-b border-white/10">
-        <h1 className="brand-title text-7xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg">
-          Lock N Learn
-        </h1>
+      <header className="w-full p-6 text-center bg-primary-800/40 backdrop-blur-md border-b border-accent-light/30">
+        <div className="flex items-center justify-center gap-4">
+          <img 
+            src={lockIcon} 
+            alt="Lock Icon" 
+            className="w-16 h-16 md:w-20 md:h-20 drop-shadow-lg"
+          />
+          <h1 className="brand-title text-7xl md:text-8xl font-bold text-white" style={{ 
+            textShadow: '0 0 10px rgba(79, 163, 184, 0.5), 0 0 20px rgba(79, 163, 184, 0.3), 0 2px 4px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)',
+            filter: 'drop-shadow(0 0 8px rgba(79, 163, 184, 0.4))',
+            WebkitTextStroke: '0.5px rgba(79, 163, 184, 0.3)'
+          }}>
+            Lock N Learn
+          </h1>
+        </div>
       </header>
 
       {/* Tabs Menu */}
       <div className="flex justify-center p-6">
-        <div className="flex gap-2 bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20">
+        <div className="flex gap-2 bg-primary-800/30 backdrop-blur-md rounded-xl p-2 border border-accent-light/30">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer ${
                   isActive 
-                    ? `${getActiveTabGradient(tab.id)} text-white shadow-lg transform scale-105` 
-                    : "text-gray-300 hover:text-white hover:bg-white/10"
+                    ? `${getActiveTabGradient(tab.id)} text-white shadow-soft transform scale-105` 
+                    : "text-gray-300 hover:text-white hover:bg-primary-700/30"
                 }`}
               >
                 {tab.label}

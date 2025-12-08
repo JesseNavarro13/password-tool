@@ -37,14 +37,14 @@ const PasswordStrengthTab = () => {
     <div className="min-h-screen py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold h-14 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold h-14 bg-gradient-to-r from-accent-light via-white to-accent-light bg-clip-text text-transparent mb-4 drop-shadow-md">
             Password Strength Checker
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
             Experience our advanced password strength detector with interactive attacker cards, real-time analysis, and threat level assessment.
           </p>
           
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
+          <div className="bg-primary-800/30 backdrop-blur-md rounded-2xl p-8 border border-accent-light/30 shadow-soft">
             <div className="text-center">
               <h3 className="text-2xl font-bold text-white mb-4">
                 🛡️ Advanced Password Security Tool
@@ -61,12 +61,14 @@ const PasswordStrengthTab = () => {
                 <li>• Background threat map visualization</li>
               </ul>
               
-              <button
-                onClick={handleOpenPswrd}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 font-semibold shadow-lg hover:shadow-blue-500/25 text-lg"
-              >
-                🚀 Launch Password Strength Detector
-              </button>
+              <div className="border-2 border-cyan-400/60 rounded-xl p-1 hover:border-cyan-400/80 transition-all duration-300 inline-block">
+                <button
+                  onClick={handleOpenPswrd}
+                  className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white rounded-lg hover:from-cyan-400 hover:to-cyan-500 transition-all duration-300 font-semibold shadow-soft hover:shadow-glow text-lg cursor-pointer"
+                >
+                  🚀 Launch Password Strength Detector
+                </button>
+              </div>
               
               <div className="mt-4">
                 <p className="text-sm text-gray-400 mb-2">
@@ -78,7 +80,7 @@ const PasswordStrengthTab = () => {
                     href="/pswrd/index.html" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 underline ml-1"
+                    className="text-accent-light hover:text-primary-300 underline ml-1"
                   >
                     /pswrd/index.html
                   </a>
@@ -88,9 +90,9 @@ const PasswordStrengthTab = () => {
           </div>
 
           {/* Password FAQ Section */}
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl mt-12">
+          <div className="bg-primary-800/30 backdrop-blur-md rounded-2xl p-8 border border-accent-light/30 shadow-soft mt-12">
             <div className="text-center">
-              <h3 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <h3 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-white via-accent-light to-white bg-clip-text text-transparent drop-shadow-md">
                 Password Security FAQ
               </h3>
               <p className="text-gray-300 mb-8 text-center">
@@ -102,20 +104,20 @@ const PasswordStrengthTab = () => {
                 <div key={index} className="group">
                   <button
                     onClick={() => setOpenSection(openSection === index ? null : index)}
-                    className="w-full p-6 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-blue-400/50 rounded-xl transition-all duration-300 text-left"
+                    className="w-full p-6 bg-primary-700/20 hover:bg-primary-700/30 border border-accent-light/30 hover:border-accent-light/60 rounded-xl transition-all duration-300 text-left cursor-pointer"
                   >
                     <div className = "flex justify-between items-center">
                       <h4 className="text-lg font-semibold text-white pr-4">
                         {section.title}
                       </h4>
-                      <div className="text-2xl text-blue-400 transition-transform duration-300 group-hover:scale-110">
+                      <div className="text-2xl text-accent-light transition-transform duration-300 group-hover:scale-110">
                         {openSection === index ? "▲" : "▼"}
                       </div>
                     </div>
                   </button>
                   
                   {openSection === index && (
-                    <div className="mt-2 p-6 bg-white/5 border border-white/10 rounded-xl animate-fade-in-up">
+                    <div className="mt-2 p-6 bg-primary-800/20 border border-accent-light/20 rounded-xl animate-fade-in-up">
                       <div className="text-gray-300 leading-relaxed">
                         {section.content}
                       </div>
