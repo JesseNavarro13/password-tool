@@ -7,7 +7,7 @@
 
   color-scheme: dark;
   color: #ffffff;
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #312e81 100%);
+  background: linear-gradient(135deg, #0f1a20 0%, #1a2f3a 50%, #25526b 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,7 +27,7 @@ html, body {
 }
 
 body {
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #312e81 100%);
+  background: linear-gradient(135deg, #0f1a20 0%, #1a2f3a 50%, #25526b 100%);
   min-height: 100vh;
 }
 
@@ -54,23 +54,20 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(79, 163, 184, 0.4);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(79, 163, 184, 0.6);
 }
 
 /* Remove old tab button styles - now handled by Tailwind */
-.tab-button {
-  /* Styles are now handled by Tailwind classes in App.jsx */
-}
 
 /* Focus styles for accessibility */
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #4fa3b8;
   outline-offset: 2px;
 }
 
@@ -81,7 +78,7 @@ a:focus-visible {
 
 /* Custom gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(135deg, #4fa3b8, #25526b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -89,9 +86,9 @@ a:focus-visible {
 
 /* Glassmorphism utility */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(37, 82, 107, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(79, 163, 184, 0.2);
 }
 
 /* Animation utilities */

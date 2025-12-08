@@ -421,6 +421,9 @@ const results = document.getElementById('results');
 const STORAGE_KEY = 'passwordGameHighScores';
 const MAX_SCORES = 10; // Keep top 10 scores
 
+// Store current score data temporarily before saving with name
+let pendingScore = null;
+
 function getHighScores() {
   const scoresJson = localStorage.getItem(STORAGE_KEY);
   if (scoresJson) {
@@ -434,8 +437,8 @@ function getHighScores() {
   return [];
 }
 
-function saveHighScore(timeString, timeMs) {
-  console.log("Saving high score. Time:", timeString, "TimeMs:", timeMs);
+function saveHighScore(timeString, timeMs, playerName = 'Anonymous') {
+  console.log("Saving high score. Time:", timeString, "TimeMs:", timeMs, "Name:", playerName);
   
   if (!timeString || timeMs === undefined || timeMs === null) {
     console.error("Invalid score data:", { timeString, timeMs });
@@ -449,7 +452,8 @@ function saveHighScore(timeString, timeMs) {
     time: timeString,
     timeMs: timeMs,
     date: new Date().toLocaleDateString(),
-    timestamp: Date.now()
+    timestamp: Date.now(),
+    name: playerName.trim() || 'Anonymous'
   };
   
   scores.push(newScore);
@@ -488,13 +492,17 @@ function saveHighScore(timeString, timeMs) {
   return result;
 }
 
-function showCompletionModal(timeString, highScoreInfo) {
+function showCompletionModal(timeString, highScoreInfo, timeMs) {
   console.log("Showing completion modal. Time:", timeString, "HighScoreInfo:", highScoreInfo);
   
   const modal = document.getElementById('completionModal');
   const modalTime = document.getElementById('modalTime');
   const highScoreMessage = document.getElementById('highScoreMessage');
   const highScoreText = document.getElementById('highScoreText');
+  const nameInputSection = document.getElementById('nameInputSection');
+  const playerNameInput = document.getElementById('playerName');
+  const saveScoreBtn = document.getElementById('saveScoreBtn');
+  const closeModalBtn = document.getElementById('closeModalBtn');
   
   if (!modal) {
     console.error("Modal element not found!");
@@ -510,6 +518,14 @@ function showCompletionModal(timeString, highScoreInfo) {
   
   if (highScoreInfo && highScoreInfo.isHighScore) {
     if (highScoreMessage) highScoreMessage.style.display = 'block';
+    if (nameInputSection) nameInputSection.style.display = 'block';
+    if (saveScoreBtn) saveScoreBtn.style.display = 'inline-block';
+    if (closeModalBtn) closeModalBtn.style.display = 'none';
+    if (playerNameInput) {
+      playerNameInput.value = '';
+      playerNameInput.focus();
+    }
+    
     const rank = highScoreInfo.rank;
     let medal = '';
     let message = '';
@@ -532,8 +548,18 @@ function showCompletionModal(timeString, highScoreInfo) {
       highScoreText.textContent = `${medal} ${message}`;
       highScoreText.style.color = rank <= 3 ? '#ff6600' : '#0066cc';
     }
+    
+    // Store pending score data
+    pendingScore = {
+      timeString: timeString,
+      timeMs: timeMs
+    };
   } else {
     if (highScoreMessage) highScoreMessage.style.display = 'none';
+    if (nameInputSection) nameInputSection.style.display = 'none';
+    if (saveScoreBtn) saveScoreBtn.style.display = 'none';
+    if (closeModalBtn) closeModalBtn.style.display = 'inline-block';
+    pendingScore = null;
   }
   
   // Set display to flex to center the modal content
@@ -552,6 +578,24 @@ function showCompletionModal(timeString, highScoreInfo) {
   console.log("Modal element:", modal);
 }
 
+function saveScoreWithName() {
+  const playerNameInput = document.getElementById('playerName');
+  const name = playerNameInput ? playerNameInput.value.trim() : 'Anonymous';
+  
+  if (!pendingScore) {
+    console.error("No pending score to save");
+    closeCompletionModal();
+    return;
+  }
+  
+  // Save the score with the player's name
+  saveHighScore(pendingScore.timeString, pendingScore.timeMs, name);
+  pendingScore = null;
+  
+  // Close the modal
+  closeCompletionModal();
+}
+
 function closeCompletionModal() {
   const modal = document.getElementById('completionModal');
   modal.style.display = 'none';
@@ -567,8 +611,10 @@ function displayHighScores() {
     let html = '<ol style="text-align: center; padding-left: 0; list-style-position: inside; display: inline-block; margin: 0 auto;">';
     scores.forEach((score, index) => {
       const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '🏅';
+      const playerName = score.name || 'Anonymous';
       html += `<li style="margin-bottom: 8px; text-align: center;">
         <span style="font-weight: bold;">${medal} ${score.time}</span>
+        <span style="color: #4fa3b8; font-weight: 600; margin-left: 10px;">${playerName}</span>
         <span style="color: #666; font-size: 0.9em; margin-left: 10px;">(${score.date})</span>
       </li>`;
     });
@@ -600,18 +646,42 @@ function verify() {
     
     results.textContent="Congratulations! You have successfully chosen a password in " + timeString + "!";
     
-    // Save high score and get info about whether it's a high score
-    try {
-      const highScoreInfo = saveHighScore(timeString, elapsed);
-      console.log("High score info:", highScoreInfo);
-      
-      // Show completion popup with time and high score info
-      showCompletionModal(timeString, highScoreInfo);
-    } catch (error) {
-      console.error("Error saving high score:", error);
-      // Still show modal even if there's an error
-      showCompletionModal(timeString, { isHighScore: false, rank: null, totalScores: 0 });
+    // Check if this would be a high score before saving
+    const scores = getHighScores();
+    let wouldBeHighScore = false;
+    let rank = null;
+    
+    if (scores.length < MAX_SCORES) {
+      // There's room in the leaderboard
+      wouldBeHighScore = true;
+      rank = scores.length + 1;
+    } else if (scores.length > 0) {
+      // Check if this time is better than the worst time
+      const worstTime = Math.max(...scores.map(s => s.timeMs));
+      if (elapsed < worstTime) {
+        wouldBeHighScore = true;
+        // Temporarily add to check rank
+        const tempScore = { time: timeString, timeMs: elapsed, timestamp: Date.now() };
+        const tempScores = [...scores, tempScore];
+        tempScores.sort((a, b) => a.timeMs - b.timeMs);
+        rank = tempScores.findIndex(s => s.timestamp === tempScore.timestamp) + 1;
+      }
+    } else {
+      // No scores yet, this is definitely a high score
+      wouldBeHighScore = true;
+      rank = 1;
     }
+    
+    let highScoreInfo;
+    if (wouldBeHighScore) {
+      highScoreInfo = { isHighScore: true, rank: rank, totalScores: Math.min(scores.length + 1, MAX_SCORES) };
+    } else {
+      highScoreInfo = { isHighScore: false, rank: null, totalScores: scores.length };
+    }
+    
+    // Show completion popup with time and high score info
+    // Don't save yet if it's a high score - wait for name input
+    showCompletionModal(timeString, highScoreInfo, elapsed);
   }
   else
   results.textContent="The passwords do not match"

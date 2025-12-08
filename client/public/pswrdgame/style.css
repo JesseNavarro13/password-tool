@@ -1,23 +1,12 @@
 body {
-  background-color: #F2F1E6
-;
-
-;/* #121212;*/
-  justify-content: center; /* horizontal */
-   /* align-items: center;     vertical */
-  height: 200px;        
-  /*
-    background-image: url("background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  flex-direction: row;
-  */
-  color: black;
+  background: linear-gradient(135deg, #0f1a20 0%, #1a2f3a 50%, #25526b 100%);
+  color: #ffffff;
   display: flex;
-  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .chunk {
@@ -86,15 +75,14 @@ body {
 }
 
 .main {
- /* flex: 1;
-  padding: 38px;*/
   display: flex;
   flex-direction: column;
-  align-items: center;  
- 
- /* height: 100%;
-  /*width:50%;*/
-
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 40px 20px;
+  margin: 0 auto;
 }
 
 
@@ -116,4 +104,110 @@ body {
   display: inline-block;
   animation: sway 2s ease-in-out infinite;
   transform-origin: center bottom;
+  color: #ffffff;
+}
+
+/* Input field styling */
+#textInput, #pswrdAgain {
+  padding: 12px 16px;
+  border: 2px solid rgba(79, 163, 184, 0.3);
+  border-radius: 8px;
+  background: rgba(37, 82, 107, 0.3);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+#textInput:focus, #pswrdAgain:focus {
+  outline: none;
+  border-color: rgba(79, 163, 184, 0.6);
+  box-shadow: 0 0 20px rgba(79, 163, 184, 0.3);
+}
+
+#textInput::placeholder, #pswrdAgain::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Button styling */
+button {
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(79, 163, 184, 0.3);
+}
+
+/* Rule boxes text color */
+#container > div {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+#container > div p {
+  color: #ffffff;
+}
+
+#container > div u {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+#container > div span {
+  color: #ffffff;
+}
+
+/* Timer display */
+#timerDisplay {
+  color: #4fa3b8;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Results text */
+#results {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Confirm and reType sections */
+#confirm, #reType {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+#confirm p, #reType p {
+  color: #ffffff;
+}
+
+/* Proceed button */
+#proceed {
+  padding: 10px 20px;
+  border: 2px solid rgba(79, 163, 184, 0.3);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #25526b, #3a7a8f);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Show/hide buttons */
+#showhide, #showhide2 {
+  background: rgba(37, 82, 107, 0.3) !important;
+  border: 2px solid rgba(79, 163, 184, 0.3) !important;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#showhide:hover, #showhide2:hover {
+  border-color: rgba(79, 163, 184, 0.6) !important;
+  background: rgba(37, 82, 107, 0.5) !important;
 }
