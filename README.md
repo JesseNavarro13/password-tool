@@ -81,19 +81,24 @@ Displays a real-time visualization of cyber attacks occurring around the world t
 
 ```
 /screenshots
-  password-checker.png
-  pattern-analysis.png
-  password-game.png
-  attack-map.png
+  password-checker.PNG
+  pattern-analysis.PNG
+  password-game.PNG
+  attack-map.PNG
+  home-page.PNG
+  quiz-feature.PNG
 ```
 
 Example:
 
+### Lock N Learn Homepage
+![Homepage](screenshots/home-page.PNG)
+
 ### Password Strength Checker
-![Password Checker](screenshots/password-checker.png)
+![Password Checker](screenshots/password-checker.PNG)
 
 ### Pattern Analysis
-![Pattern Analysis](screenshots/pattern-analysis.png)
+![Pattern Analysis](screenshots/pattern-analysis.PNG)
 
 ---
 
@@ -165,8 +170,8 @@ Backend REST API (Spring Boot)
 ## 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/password-security-toolkit.git
-cd password-security-toolkit
+git clone https://github.com/YOUR-USERNAME/password-tool.git
+cd password-tool
 ```
 
 ---
@@ -174,7 +179,7 @@ cd password-security-toolkit
 ## 2️⃣ Start the Backend
 
 ```bash
-cd backend
+cd server
 mvn spring-boot:run
 ```
 
@@ -189,7 +194,7 @@ http://localhost:8080
 ## 3️⃣ Start the Frontend
 
 ```bash
-cd frontend
+cd client
 npm install
 npm run dev
 ```
