@@ -17,20 +17,19 @@
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [API Example](#api-example)
-- [Challenges](#challenges)
 - [Future Improvements](#future-improvements)
 - [Contributors](#contributors)
 
 ---
 
-# **📌 Overview**
+# 📌 Overview
 Lock N Learn is a web-based cybersecurity education application designed to help users understand how secure their passwords really are. The system analyzes user-provided passwords and provides interactive feedback about potential weaknesses, estimated cracking time, and common attack patterns used by real-world attackers.
 
 The goal of the project is to educate users on password security best practices by demonstrating how attackers exploit predictable password patterns and structures. By visualizing these vulnerabilities, the application encourages users to create stronger and more resilient passwords.
 
 ---
 
-# **🎯 Features**
+# 🎯 Features
 ## **🔎 Real-Time Password Strength Checker**
 - Analyzes passwords as the user types
 - Detects:
@@ -242,6 +241,19 @@ POST /api/analyze
 
 ---
 
-## **👥 Contributors**
+#  🔮 Future Improvements
+
+Potential enhancements include:
+
+- Browser extension for password strength detection
+- Integration with breached password databases
+- Machine learning–based password strength prediction
+- Additional password cracking models
+- User accounts with saved analysis history
+- Mobile-friendly interface
+
+---
+
+# 👥 Contributors
 Jesse Navarro\
 Aaron Clayton
